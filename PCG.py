@@ -122,7 +122,7 @@ def pprompt(question):
         print('Error: Invalid input.')
         pprompt(question)
 
-def zprompt(): #This section was the main cause of the issue from the last commit.
+def zprompt():
     global results
     global traits
     global ability
@@ -318,29 +318,52 @@ ability = { 'Big Horn': 'Your monster has horns. If the opponent uses a physical
            'Duality' : '25% Chance of attacking twice in one turn.',
            'Steady Hands' : 'Introverted monsters with this ability get an attack bonus; extraverted monsters with this ability get additional range.',
            'Fluid' : 'Gains a bonus to both elemental and physical resistance.'}
-#Part I
+
+print('Welcome to the world of Pymon! My name is Shell!')
+print('Pymon are an experiment in python based RPG character generation.')
+print('They are virtual monsters with strengths, weaknesses, and abilities uniquely based on your personality.')
+print('The following survey will determine what skills your monster will be able to bring into combat!')
+print('How?  Carl G. Jungs theory of psychological types.')
+print('According to Jung their are 16 main types of personalities.')
+print('These are determined by 4 pairs of opposite tendencies:')
+print('Extroversion / Introversion (e / i)')
+print('Sensing / Intuition (s / n)')
+print('Thinking / Feeling (t / f)')
+print('Judging / Percieving (j / p)')
+print('Determining which behavioral tendency in each pair you leaves you with one of 16 4-letter types.')
+print('Each pair of traits represents 2 possible traits that will be assigned to each of its 4 trait catagories.')
+print('Your monster will also recieve a special ability that makes it unique, and is not based on personality type.')
+print('But I will explain all these details later. Its time figure put what your monster is made of!')
+print('Let the test begin!')      
+print('Input the answer that best represents your feelings about the statement.')
+print('a) strongly agree')
+print('b) agree')
+print('c) disagree')
+print('d) strongly disagree')
+print('Please answer using only a single lowercase letter.')
+#Part Part I
 #Introversion vs Extroversion
 
 #Introversion
 
-iprompt('[Insert Question Here]')
+iprompt('You are a person somewhat reserved and distant in communication.')
 progresscheck() #testing only
-iprompt('[Insert Question Here]')
+iprompt('After prolonged socializing you feel you need to get away and be alone.')
 progresscheck() #testing only
-iprompt('[Insert Question Here]')
+iprompt('You find it difficult to speak loudly.')
 progresscheck() #testing only
 iprompt('[Insert Question Here]')
 progresscheck() #testing only
 
 #Extroversion
 
-eprompt('[Insert Question Here]')
+eprompt('You enjoy having a wide circle of acquaintances.')
 progresscheck() #testing only
-eprompt('[Insert Question Here]')
+eprompt('You spend your leisure time actively socializing with a group of people, attending parties, shopping, etc.')
 progresscheck() #testing only
-eprompt('[Insert Question Here]')
+eprompt('You rapidly get involved in the social life of a new workplace.')
 progresscheck() #testing only
-eprompt('[Insert Question Here]')
+eprompt('The more people you speak to, the better you feel.')
 progresscheck() #testing only
 
 #Part II
@@ -373,9 +396,9 @@ progresscheck() #testing only
 
 #Thinking
 
-tprompt('[Insert Question Here]')
+tprompt('You trust reason rather than feelings.')
 progresscheck() #testing only 
-tprompt('[Insert Question Here]')
+tprompt('You usually plan your actions in advance.')
 progresscheck() #testing only
 tprompt('[Insert Question Here]')
 progresscheck() #testing only
@@ -384,20 +407,20 @@ progresscheck() #testing only
 
 #Feeling
 
-fprompt('[Insert Question Here]')
+fprompt('You are usually the first to react to a sudden event: the telephone ringing or unexpected question.')
 progresscheck() #testing only
-fprompt('[Insert Question Here]')
+fprompt('You feel involved when watching TV soaps.')
 progresscheck() #testing only
-fprompt('[Insert Question Here]')
+fprompt('You prefer to act immediately rather than speculate about various options.')
 progresscheck() #testing only
-fprompt('[Insert Question Here]')
+fprompt('You frequently and easily express your feelings and emotions.')
 progresscheck() #testing only
 
 #Judging vs Percieving
 
 #Judging
 
-jprompt('[Insert Question Here]')
+jprompt('You value justice higher than mercy.')
 progresscheck() #testing only
 jprompt('[Insert Question Here]')
 progresscheck() #testing only
@@ -434,5 +457,3 @@ checkresults() #testing only
 gettraits()
 checktraits() #testing only
         
-
-
