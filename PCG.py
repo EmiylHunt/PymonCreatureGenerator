@@ -1,6 +1,21 @@
+def space():
+    print(' ')
+    
+def choices():
+    space()
+    print('a) strongly agree')
+    print('b) agree')
+    print('c) disagree')
+    print('d) strongly disagree')
+    space()
+    print('Input lowercase answers a - d only, or prompt will be repeated.')
+   
+
 def iprompt(question):
     global i
     global e
+    choices()
+    space()
     q = str(raw_input(question + ' >> '))
     if q == 'a':
         i += 2
@@ -17,6 +32,8 @@ def iprompt(question):
 def eprompt(question):
     global e
     global i
+    choices()
+    space()
     q = str(raw_input(question + ' >> '))
     if q == 'a':
         e += 2
@@ -33,6 +50,8 @@ def eprompt(question):
 def nprompt(question):
     global n
     global s
+    choices()
+    space()
     q = str(raw_input(question + ' >> '))
     if q == 'a':
         n += 2
@@ -49,6 +68,8 @@ def nprompt(question):
 def sprompt(question):
     global s
     global n
+    choices()
+    space()
     q = str(raw_input(question + ' >> '))
     if q == 'a':
         s += 2
@@ -62,6 +83,8 @@ def sprompt(question):
 def tprompt(question):
     global t
     global f
+    choices()
+    space()
     q = str(raw_input(question + ' >> '))
     if q == 'a':
         t += 2
@@ -78,6 +101,8 @@ def tprompt(question):
 def fprompt(question):
     global f
     global t
+    choices()
+    space()
     q = str(raw_input(question + ' >> '))
     if q == 'a':
         f += 2
@@ -93,6 +118,8 @@ def fprompt(question):
 def jprompt(question):
     global j
     global p
+    choices()
+    space()
     q = str(raw_input(question + ' >> '))
     if q == 'a':
         j += 2
@@ -109,6 +136,8 @@ def jprompt(question):
 def pprompt(question):
     global p
     global j
+    choices()
+    space()
     q = str(raw_input(question + ' >> '))
     if q == 'a':
         p += 2
@@ -123,6 +152,7 @@ def pprompt(question):
         pprompt(question)
 
 def zprompt():
+    space()
     global results
     global traits
     global ability
@@ -139,6 +169,7 @@ def zprompt():
     print('j) 12/22 - 1/19')
     print('k) 1/20 - 2/18 ')
     print('l) 2/19 - 3/20')
+    print('Input lowercase answers a - l only, or prompt will be repeated.')
     q = str(raw_input('>> '))
     if q == 'a':
         results['zodiac'] = 'Aries'
@@ -148,10 +179,10 @@ def zprompt():
         traits['ability'] = 'Great Courage: ' + ability['Great Courage']
     elif q == 'c':
         results['zodiac'] = 'Gemini'
-        results['ability'] = 'Duality: ' + ability['Duality']
+        traits['ability'] = 'Duality: ' + ability['Duality']
     elif q == 'd':
         results['zodiac'] = 'Cancer'
-        results['ability'] = 'Performance in a Pinch: ' + ability['Performance in a Pinch']
+        traits['ability'] = 'Performance in a Pinch: ' + ability['Performance in a Pinch']
     elif q == 'e':
         results['zodiac'] = 'Leo'
         traits['ability'] = 'Great Courage: ' + ability['Great Courage']
@@ -160,10 +191,10 @@ def zprompt():
         traits['ability'] = 'Elemental Blessing: ' + ability['Elemental Blessing']
     elif q == 'g':
         results['zodiac'] = 'Libra'
-        results['ability'] = 'Duality: ' + ability['Duality']
+        traits['ability'] = 'Duality: ' + ability['Duality']
     elif q == 'h':
         results['zodiac'] = 'Scorpio'
-        results['ability'] = 'Performance in a Pinch: ' + ability['Performance in a Pinch']
+        traits['ability'] = 'Performance in a Pinch: ' + ability['Performance in a Pinch']
     elif q == 'i':
         results['zodiac'] = 'Sagittarius'
         traits['ability'] = 'Steady Hands: ' + ability['Steady Hands']
@@ -189,6 +220,8 @@ def progresscheck(): #testing only
     global f
     global j
     global p
+    space()
+    print('Checking personality score...')
     print('i = ' + str(i))         
     print('e = ' + str(e))
     print('n = ' + str(n))
@@ -199,14 +232,12 @@ def progresscheck(): #testing only
     print('p = ' + str(p))
 
 def checkscores(): #testing only
-    global results
-    global ability
-    print('Your Score: ')
+    space()
+    print('Your final score is... ')
     progresscheck()
-    print('Sign: ' + results['zodiac'])
-    print(traits['ability'])
-
+    
 def getresults():
+    space()
     global i
     global e
     global n
@@ -216,41 +247,58 @@ def getresults():
     global j
     global p
     global results
+    print('Processing your results...for any ties that occur you should be asked an additional question.')
     if i == e:
-        print('Oops! Can you answer this one too?')
-        iprompt('[Insert Tiebreaker Here]')
+        space()
+        print('Oops, there was a tie! Can you answer this one too?')
+        iprompt('You would rather have a close friendship with small number than have a less intimate friendship with the majority of my peers.')
         print('Thanks!')
-        getresults1()
+        if i > e:
+            results['InEx'] = 'Introverted'
+        else:
+            results['InEx'] = 'Extroverted'
     else:
         if i > e:
             results['InEx'] = 'Introverted'
         else:
             results['InEx'] = 'Extroverted'
     if n == s:
-        print('Oops! Can you answer this one too?')
-        nprompt('[Insert Tiebreaker Here]')
+        space()
+        print('Oops, there was a tie! Can you answer this one too?')
+        nprompt('If forced to choose between them, you will make the choice that feels right, opposed to the one that is logical.')
         print('Thanks!')
-        getresults2()
+        if n > s:
+            results['iNSe'] = 'Intuitive'
+        else:
+            results['iNSe'] = 'Sensing'
     else:
         if n > s:
             results['iNSe'] = 'Intuitive'
         else:
             results['iNSe'] = 'Sensing'
     if t == f:
-        print('Oops! Can you answer this one too?')
-        tprompt('[Insert Tiebreaker Here]')
+        space()
+        print('Oops, there was a tie! Can you answer this one too?')
+        tprompt('Games are more fun if they require the use of strategy to be more sucessful.')
         print('Thanks!')
-        getresults3()
+        if t > f:
+            results['ThFe'] = 'Thinking'
+        else:
+            results['ThFe'] = 'Feeling'
     else:
         if t > f:
             results['ThFe'] = 'Thinking'
         else:
             results['ThFe'] = 'Feeling'
     if j == p:
-        print('Oops! Can you answer this one too?')
-        jprompt('[Insert Tiebreaker Here]')
+        space()
+        print('Oops, there was a tie! Can you answer this one too?')
+        pprompt('Someone is more likely to be sucessful if they are willing to take risks.')
         print('Thanks!')
-        getresults4()
+        if j > p:
+            results['JuPe'] = 'Judging'
+        else:
+            results['JuPe'] = 'Percieving'
     else:
         if j > p:
             results['JuPe'] = 'Judging'
@@ -259,30 +307,69 @@ def getresults():
     
 def checkresults(): #testing only
     global results
+    space()
+    print('Verifying your results...')
     for key in results:
         print(key + ' = ' + results[key])
 
 def gettraits():
+    space()
+    print('Generation complete!')
     global results
     global traits
     if results['InEx'] == 'Introverted':
         traits['atkrange'] = 'Ranged'
+        print('According to your score, you are more introverted than extroverted.')
+        print('Your monster keeps its distance from its opponents. It has increased range in exchange for a small damage penalty.')
+        space()
     else:
         traits['arkrange'] = 'Short Ranged'
+        print('According to your score, you are more extroverted than introverted.')
+        print('Your monster does not mind getting up close an personal with the opponent. Its attacks are short ranged, but get recieve a small damage bonus.')    
+        space()
     if results['iNSe'] == 'Intuitive':
         traits['atkresist'] = 'Elemental'
+        print('According to your score, you rely on your intuition more than your senses.')
+        print('Your monster has strong natural instincts, and is resisistant to elemental attacks.')  
+        space()
     else:
         traits['atkresist'] = 'Physical'
+        print('According to your score, you rely more on your senses than your intuition.')
+        print('Your monster is better observing its opponents movements, and can block some of the damage from physical attacks.')
+        space()
     if results['ThFe'] == 'Thinking':
         traits['atktype'] = 'Elemental'
+        print('According to your score, your choices are based more on reason than emotion.')
+        print('Your monsters understanding of nature make it an expert at elemental magic!')  
+        space()
     else:
         traits['atktype'] = 'Physical'
+        print('According to your score, your choices are based more on your emotions than reason.')
+        print('Your monster channels its passion through the martial arts(short ranged) or acrobatics(ranged)! It is a physical attacker.')
+        space()
     if results['JuPe'] == 'Judging':
         traits['luck'] = 'Percise'
+        print('According to your score, you prefer to take a relaible approach over a creative approach.')
+        print('Your monsters movements are precise! Its attacks that are within range miss only 10% of the time.')
+        print('In comparision, monsters with unpredictable movements miss 40% of the time.')
+        print('However, it only has a 10% critical hit (deals 25% more damage) chance, whereas unpredicable movements give monsters a 40% chance.')      
+        space()
     else:
         traits['luck'] = 'Unpredictable'
-
+        print('According to your score, you are more willing to take risks and like to solve problems using creativity.') 
+        print('You monster has unpredictable movements! It is more likely to use risky attacks!')
+        print('It has a whopping 40% critical hit (deals 25% more damage) chance compared to monsters with precise movements, whose chance is only 10%.')
+        print('However, its attacks that are used within range only have 60% chance of hitting and 40% chance of missing.')
+        print('In comparison, monsters that have precise movements hit 90% of time when used within range.')
+    space()
+    print('Your astrological sign determines your monsters ability!')
+    print('Your sign is ' + results['zodiac'] + '.')
+    print('Your monsters ability is...')
+    print(traits['ability'])
+                
+        
 def checktraits(): #testing only
+    print('Trait Summary:')
     global traits
     for key in traits:
               print(key + ' = ' + traits[key])
@@ -319,28 +406,37 @@ ability = { 'Big Horn': 'Your monster has horns. If the opponent uses a physical
            'Steady Hands' : 'Introverted monsters with this ability get an attack bonus; extraverted monsters with this ability get additional range.',
            'Fluid' : 'Gains a bonus to both elemental and physical resistance.'}
 
-print('Welcome to the world of Pymon! My name is Shell!')
+print('EMILY HUNT PRESENTS - PYMON CREATURE GENERATOR (BETA TEST) - THANKS FOR PARTICIPATING, EVERYONE!')
+space()
+print('Welcome to the world of Pymon!')
+space()
 print('Pymon are an experiment in python based RPG character generation.')
+space()
 print('They are virtual monsters with strengths, weaknesses, and abilities uniquely based on your personality.')
+space()
 print('The following survey will determine what skills your monster will be able to bring into combat!')
-print('How?  Carl G. Jungs theory of psychological types.')
-print('According to Jung their are 16 main types of personalities.')
+space()
+print('How you might ask?  Carl G. Jungs theory of psychological types.')
+print('According to Jung there are 16 main types of personalities.')
+space()
 print('These are determined by 4 pairs of opposite tendencies:')
+space()
 print('Extroversion / Introversion (e / i)')
 print('Sensing / Intuition (s / n)')
 print('Thinking / Feeling (t / f)')
 print('Judging / Percieving (j / p)')
+space()
 print('Determining which behavioral tendency in each pair you leaves you with one of 16 4-letter types.')
 print('Each pair of traits represents 2 possible traits that will be assigned to each of its 4 trait catagories.')
+space()
 print('Your monster will also recieve a special ability that makes it unique, and is not based on personality type.')
 print('But I will explain all these details later. Its time figure put what your monster is made of!')
-print('Let the test begin!')      
-print('Input the answer that best represents your feelings about the statement.')
-print('a) strongly agree')
-print('b) agree')
-print('c) disagree')
-print('d) strongly disagree')
-print('Please answer using only a single lowercase letter.')
+print('Let the test begin!')
+space()
+print('(This is the beta version! Your scores progressively checked to test this programs functionality.)')
+space()
+print('Input the answer that represents your level of agreement or disagreement with the statement')
+
 #Part Part I
 #Introversion vs Extroversion
 
@@ -352,7 +448,7 @@ iprompt('After prolonged socializing you feel you need to get away and be alone.
 progresscheck() #testing only
 iprompt('You find it difficult to speak loudly.')
 progresscheck() #testing only
-iprompt('[Insert Question Here]')
+iprompt(' You prefer to spend your free time relaxing by yourself, or somewhere that is quiet and calm.')
 progresscheck() #testing only
 
 #Extroversion
@@ -371,24 +467,24 @@ progresscheck() #testing only
 
 #Sensing
 
-sprompt('[Insert Question Here]')
+sprompt('You are a tactile learner.')
 progresscheck() #testing only
-sprompt('[Insert Question Here]')
+sprompt('You are not comfortable with a product unless you understand how it works.')
 progresscheck() #testing only
-sprompt('[Insert Question Here]')
+sprompt('You would rather watch a demonstration than hear an explanation.')
 progresscheck() #testing only
-sprompt('[Insert Question Here]')
+sprompt('A concept is not worth your consideration if there is no evidence to support it.')
 progresscheck() #testing only
 
 #iNtuitive
 
-nprompt('[Insert Question Here]')
+nprompt('In most situations, you are only skeptical if there is probable cause.')
 progresscheck() #testing only
-nprompt('[Insert Question Here]')
+nprompt('What is logical or illogical does not necessarily correlate with what is right and wrong.')
 progresscheck() #testing only
-nprompt('[Insert Question Here]')
+nprompt('You are facinated by phenomena that cannot be explained.')
 progresscheck() #testing only
-nprompt('[Insert Question Here]')
+nprompt('Abstract concepts are as valuable as concrete ones.')
 progresscheck() #testing only
 
 #Part III
@@ -400,9 +496,9 @@ tprompt('You trust reason rather than feelings.')
 progresscheck() #testing only 
 tprompt('You usually plan your actions in advance.')
 progresscheck() #testing only
-tprompt('[Insert Question Here]')
+tprompt('You are not easily excited.')
 progresscheck() #testing only
-tprompt('[Insert Question Here]')
+tprompt('You can usually come up with potential outcomes of a situation with relative ease.')
 progresscheck() #testing only
 
 #Feeling
@@ -422,26 +518,26 @@ progresscheck() #testing only
 
 jprompt('You value justice higher than mercy.')
 progresscheck() #testing only
-jprompt('[Insert Question Here]')
+jprompt('You prefer look up an exsiting solution for a problem or consult a peer before solving a problem on you own.')
 progresscheck() #testing only
-jprompt('[Insert Question Here]')
+jprompt('The viewpoints of those around have are a significant factor in the choices you make.')
 progresscheck() #testing only
-jprompt('[Insert Question Here]')
+jprompt('You would rather stick to an approach you can rely on, rather than experimenting with new methods.')
 progresscheck() #testing only
         
 #Percieving
 
-pprompt('[Insert Question Here]')
+pprompt('You think that never breaking rules will not usually get someone far in life.')
 progresscheck() #testing only
-pprompt('[Insert Question Here]')
+pprompt('You rely on improvisation more often that prior planning.')
 progresscheck() #testing only
-pprompt('[Insert Question Here]')
+pprompt('Generally speaking, you learn best through hands on application.')
 progresscheck() #testing only
-pprompt('[Insert Question Here]')
+pprompt('When confronted with a problem, you would prefer to solve it independently before consulting with someone else.')
 progresscheck() #testing only
         
 #Part V
-Astrology
+#Astrology
 
 zprompt()
 
@@ -455,5 +551,4 @@ checkresults() #testing only
 #Generating Traits
 
 gettraits()
-checktraits() #testing only
-        
+#checktraits() #testing only
