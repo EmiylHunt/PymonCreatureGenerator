@@ -113,6 +113,7 @@ def fprompt(question):
     elif q == 'd':
         t += 2
     else:
+        
         print('Error: Invalid input.')
         fprompt(question)
 def jprompt(question):
